@@ -1,15 +1,56 @@
-## Foundations
+# RESTful API Design
 
-### Characteristics
-In general, a well-designed API design will have the following characteristics:
+A comprehensive guide for designing RESTful APIs that are intuitive, maintainable, and developer-friendly.
 
-- **Easy to read and work with**: A well-designed API will be easy to work with, and its resources and associated operations can quickly be memorized by developers who work with it constantly.
+## 🎯 Purpose
 
-- **Hard to misuse**: Implementing and integrating with an API with good design will be a straightforward process, and writing incorrect code will be a less likely outcome. It has informative feedback and doesn’t enforce strict guidelines on the API’s end consumer.
+RESTful API design serves as the foundation of modern web services by:
 
-- **Complete and concise**: Finally, a complete API will make it possible for developers to make full-fledged applications against the data you expose. Completeness happens over time usually, and most API designers and developers incrementally build on top of existing APIs. It is an ideal that every engineer or company with an API must strive towards.
+- **Developer Experience**: Intuitive and easy-to-use APIs
+- **Scalability**: APIs that grow with your business needs
+- **Maintainability**: Well-structured and documented APIs
+- **Interoperability**: Standards-based communication
+- **Performance**: Efficient data exchange
+- **Security**: Secure and authenticated access
+
+## 📋 API Design Fundamentals
+
+### Core Principles
+
+**REST (Representational State Transfer)**:
+
+- **Stateless**: Each request contains all necessary information
+- **Client-Server**: Separation of concerns between client and server
+- **Cacheable**: Responses can be cached for performance
+- **Uniform Interface**: Consistent interaction patterns
+- **Layered System**: Hierarchical system architecture
+- **Code on Demand**: Optional server-side code execution
+
+### Design Characteristics
+
+**Easy to Read and Work With**:
+
+- **Intuitive URLs**: Clear, descriptive resource paths
+- **Consistent Naming**: Standardized naming conventions
+- **Clear Documentation**: Comprehensive API documentation
+- **Predictable Patterns**: Consistent request/response formats
+
+**Hard to Misuse**:
+
+- **Validation**: Strong input validation and error handling
+- **Error Messages**: Clear, actionable error responses
+- **Rate Limiting**: Protection against abuse
+- **Authentication**: Secure access control
+
+**Complete and Concise**:
+
+- **Full CRUD Operations**: Complete resource lifecycle support
+- **Comprehensive Coverage**: All necessary endpoints
+- **Efficient Responses**: Only necessary data in responses
+- **Versioning**: Backward compatibility support
 
 ### Design Flow
+
 The Design Guide suggests taking the following steps when designing resource-oriented APIs (more details are covered in specific sections below):
 
 - Determine what types of resources an API provides.
@@ -19,25 +60,27 @@ The Design Guide suggests taking the following steps when designing resource-ori
 - Attach a minimum set of methods to resources.
 
 ### Resources
+
 Resources are fundamental to the concept of REST. A resource is an object that’s important enough to be referenced in itself. A resource has data, relationships to other resources, and methods that operate against it to allow for accessing and manipulating the associated information. A group of resources is called a collection.
 
 - A collection contains a list of resources of **the same type**. For example, a user has a collection of contacts.
 - A resource has some state and zero or more sub-resources. Each sub-resource can be either a simple resource or a collection resource.
 
-For example, Andela API has a collection of users, each user has a collection of placements, a cohort resource, a location resource, and several others.
+For example, a project management API has a collection of users, each user has a collection of tasks, a project resource, a team resource, and several others.
 
 ### Methods
+
 All resources have a set of methods that can be operated against them to work with the data being exposed by the API.
 
-RESTful APIs comprise majorly of HTTP methods that have well-defined and unique actions against any resource. Here’s a list of commonly used HTTP methods that define the CRUD operations for any resource or collection in a  RESTful API.
+RESTful APIs comprise majorly of HTTP methods that have well-defined and unique actions against any resource. Here’s a list of commonly used HTTP methods that define the CRUD operations for any resource or collection in a RESTful API.
 
-Standard Method | HTTP Method | Description
---------------- | ----------- | -----------
-List | GET < collection url > | Used to retrieve a representation of  collection.
-Get | GET < resource url > | Used to retrieve a representation of a resource.
-Create | POST < collection url > | Used to create new resources and sub-resources.
-Update | PUT or PATCH < resource url > | Used to update existing resources.
-Delete | DELETE < resource url > | Used to delete existing resources.
+| Standard Method | HTTP Method                   | Description                                      |
+| --------------- | ----------------------------- | ------------------------------------------------ |
+| List            | GET < collection url >        | Used to retrieve a representation of collection. |
+| Get             | GET < resource url >          | Used to retrieve a representation of a resource. |
+| Create          | POST < collection url >       | Used to create new resources and sub-resources.  |
+| Update          | PUT or PATCH < resource url > | Used to update existing resources.               |
+| Delete          | DELETE < resource url >       | Used to delete existing resources.               |
 
 ## Requests
 
@@ -52,7 +95,7 @@ All of these actions are simply the query on one dataset. There will be no new s
 - **Sorting**: In case, the client wants to get the sorted list of users, the `GET /users` endpoint should accept multiple sort params in the query. E.g `GET /users?sort=name_asc` would sort the users by their name in ascending order.
 
 - **Filtering**: For filtering the dataset, we can pass various options through query parameters.
-E.g `GET /users?placement_status=available&location=Nairobi` would filter the user's list data with the placement status of Available and where the location is Nairobi.
+  E.g `GET /users?status=active&role=developer` would filter the user's list data with the status of active and where the role is developer.
 
 - **Searching**: When searching the user name in users list the API endpoint should be `GET /users?search=John Doe`
 
@@ -66,9 +109,9 @@ When your APIs are being consumed by the world, upgrading the APIs with some bre
 
 ## Responses
 
-Providing good feedback to developers on how well they are using your API goes a long way in improving adoption and retention.  Every client request and server-side response is a message and, in an ideal RESTful ecosystem, these messages must be self-descriptive.
+Providing good feedback to developers on how well they are using your API goes a long way in improving adoption and retention. Every client request and server-side response is a message and, in an ideal RESTful ecosystem, these messages must be self-descriptive.
 
-Good feedback involves positive validation of correct implementation and an informative error on incorrect implementation that can help users debug and correct the way they use the API.  HTTP status codes are a bunch of standardized codes which has various explanations in various scenarios. The server should always return the right status code.
+Good feedback involves positive validation of correct implementation and an informative error on incorrect implementation that can help users debug and correct the way they use the API. HTTP status codes are a bunch of standardized codes which has various explanations in various scenarios. The server should always return the right status code.
 
 **2xx (Success category)**
 
@@ -103,6 +146,7 @@ These status codes represent that the client has raised a faulty request.
 - **503 Service Unavailable** indicates that the server is down or unavailable to receive and process the request. Mostly if the server is undergoing maintenance.
 
 ## Additional Resources
+
 - [Google's API Design Guide](https://cloud.google.com/apis/design/)
 - [Best Practices in API Design](https://swaggerhub.com/blog/api-design/api-design-best-practices/)
 - [API Design Guidelines](https://hackernoon.com/restful-api-designing-guidelines-the-best-practices-60e1d954e7c9)
