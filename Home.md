@@ -22,7 +22,6 @@ This playbook serves as the foundation of our engineering culture by:
 - **[3. Pull Request](3.-Pull-Request.md)** - PR standards and review processes
 - **[4. User Stories (General)](<4.-User-Stories-(General).md>)** - User story writing and management
 - **[4.1. GitHub Issues Guide](4.1-GitHub-Issues-Guide.md)** - Effective issue creation and management
-- **[9. Scrum Guide](9.-Scrum-Guide.md)** - Scrum framework implementation
 
 ### 💻 Development Standards
 
@@ -51,7 +50,7 @@ This playbook serves as the foundation of our engineering culture by:
 
 1. **User Stories**: Review the user story guidelines for effective requirement management
 2. **GitHub Issues**: Use the issue guide for proper project tracking
-3. **Scrum Guide**: Implement Scrum practices for team management
+3. **Project Management**: Follow project management best practices
 4. **Pull Requests**: Ensure proper PR processes are followed
 5. **Repository Standards**: Maintain high-quality project documentation
 
@@ -122,26 +121,25 @@ pre-commit run --all-files
 
 **Code Quality**:
 
-- **Linters**: ESLint, Pylint, RuboCop
-- **Formatters**: Prettier, Black, gofmt
-- **Static Analysis**: SonarQube, CodeClimate
-- **Security**: Snyk, OWASP ZAP
-- **Testing**: Jest, Pytest, RSpec
+- **Linters**: ESLint, Prettier, SonarQube, CodeClimate
+- **Security**: Snyk, OWASP ZAP, CodeQL, Trivy
+- **Testing**: Jest, Cypress, Playwright, Vitest
+- **Performance**: Lighthouse, WebPageTest, Bundle Analyzer
 
 **Collaboration**:
 
-- **Version Control**: Git, GitHub, GitLab
-- **Project Management**: Jira, Trello, Asana
-- **Communication**: Slack, Teams, Discord
-- **Documentation**: Confluence, Notion, GitBook
-- **Code Reviews**: GitHub, GitLab, Bitbucket
+- **Version Control**: Git, GitHub, GitLab, Bitbucket
+- **Project Management**: Linear, Jira, Trello, Asana
+- **Communication**: Slack, Discord, Microsoft Teams
+- **Documentation**: Notion, GitBook, Confluence, Obsidian
+- **Code Reviews**: GitHub, GitLab, Phabricator
 
 **CI/CD**:
 
-- **Automation**: GitHub Actions, GitLab CI, Jenkins
-- **Deployment**: Docker, Kubernetes, Terraform
-- **Monitoring**: Prometheus, Grafana, DataDog
-- **Alerting**: PagerDuty, OpsGenie, AlertManager
+- **Automation**: GitHub Actions, GitLab CI, Jenkins, CircleCI
+- **Deployment**: Docker, Kubernetes, Terraform, Pulumi
+- **Monitoring**: Prometheus, Grafana, DataDog, New Relic
+- **Alerting**: PagerDuty, OpsGenie, AlertManager, PagerTree
 
 ### Learning Resources
 
@@ -149,17 +147,17 @@ pre-commit run --all-files
 
 - [Clean Code by Robert Martin](https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship/dp/0132350882)
 - [The Pragmatic Programmer](https://www.amazon.com/Pragmatic-Programmer-journey-mastery-Anniversary/dp/0135957052)
-- [Effective Java by Joshua Bloch](https://www.amazon.com/Effective-Java-3rd-Joshua-Bloch/dp/0134685997)
-- [Design Patterns by Gang of Four](https://www.amazon.com/Design-Patterns-Elements-Reusable-Object-Oriented/dp/0201633612)
-- [Refactoring by Martin Fowler](https://www.amazon.com/Refactoring-Improving-Design-Existing-Code/dp/0134757599)
+- [System Design Interview](https://www.amazon.com/System-Design-Interview-insiders-Second/dp/B08CMF2CQF)
+- [Designing Data-Intensive Applications](https://www.amazon.com/Designing-Data-Intensive-Applications-Reliable-Maintainable/dp/1449373321)
 
 **Online Resources**:
 
 - [GitHub Documentation](https://docs.github.com/)
 - [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials)
-- [Scrum.org](https://www.scrum.org/)
-- [BEM Methodology](http://getbem.com/)
-- [RESTful API Design](https://restfulapi.net/)
+- [MDN Web Docs](https://developer.mozilla.org/)
+- [React Documentation](https://react.dev/)
+- [Vue.js Documentation](https://vuejs.org/)
+- [Angular Documentation](https://angular.io/)
 
 ## 🤝 Contributing
 
