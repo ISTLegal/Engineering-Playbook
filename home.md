@@ -15,26 +15,26 @@ This playbook serves as the foundation of our engineering culture by:
 
 ## 📚 Table of Contents
 
-### 🏗️ Project Management
+### 🏗️ Core Standards
 
-- **[0. Repository README](0.-Repo-Readme.md)** - Comprehensive repository standards and documentation
-- **[1. Branch Naming](1.-Branch-Naming.md)** - Standardized branch naming conventions
-- **[3. Pull Request](3.-Pull-Request.md)** - PR standards and review processes
-- **[4. User Stories (General)](<4.-User-Stories-(General).md>)** - User story writing and management
-- **[4.1. GitHub Issues Guide](4.1-GitHub-Issues-Guide.md)** - Effective issue creation and management
+- **[01. Repository README Standards](01-repository-readme-standards.md)** - Guidelines for writing effective repository documentation
+- **[02. Branch Naming Convention](02-branch-naming-convention.md)** - Consistent branch naming patterns
+- **[03. Commit Message Convention](03-commit-message-convention.md)** - Writing clear, meaningful commit messages
+- **[04. Pre-commit Hooks Setup](04-pre-commit-hooks-setup.md)** - Automated code quality checks
+- **[05. Pull Request Standards](05-pull-request-standards.md)** - Effective PR creation and review guidelines
+- **[06. Testing Standards](06-testing-standards.md)** - Comprehensive testing guidelines and best practices
+- **[07. CI/CD Standards](07-ci-cd-standards.md)** - Continuous Integration and Deployment best practices
+- **[08. Version Control with Git](08-version-control-with-git.md)** - Git workflows and strategies
+
+### 📋 Project Management
+
+- **[09. User Stories Guide](09-user-stories-guide.md)** - Writing effective user stories
+- **[10. GitHub Issues Guide](10-github-issues-guide.md)** - Managing issues and tasks on GitHub
 
 ### 💻 Development Standards
 
-- **[2. Commit Message](2.-Commit-Message.md)** - Conventional commit message standards
-- **[2.1. Pre-commit Hooks](2.1-Pre-commit-Hooks.md)** - Automated code quality checks
-- **[5. CI/CD](5.-CI-CD.md)** - Continuous integration and deployment
-- **[6. CSS Naming with BEM](6.-CSS-Naming-with-BEM.md)** - CSS methodology and best practices
-- **[7. RESTful API Design](7.-RESTful-API-Design.md)** - API design principles and standards
-- **[8. Version Control with Git](8.--Version-Control--w-Git.md)** - Git workflow and best practices
-
-### 🏢 Engineering Culture
-
-- **[Other Standards](Other-Standards.md)** - Comprehensive engineering standards and practices
+- **[11. RESTful API Design](11-restful-api-design.md)** - API design principles and best practices
+- **[12. Other Standards](12-other-standards.md)** - Additional coding and development standards
 
 ## 🚀 Getting Started
 

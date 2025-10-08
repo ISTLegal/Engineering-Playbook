@@ -13,40 +13,43 @@ This playbook provides minimal, practical guidelines for software engineering te
 
 ### Core Standards
 
-- **[Home](Home.md)** - Overview and introduction to the playbook
-- **[Repository README Standards](0.-Repo-Readme.md)** - Guidelines for writing effective repository documentation
-- **[Branch Naming Convention](1.-Branch-Naming.md)** - Consistent branch naming patterns
-- **[Commit Message Standards](2.-Commit-Message.md)** - Writing clear, meaningful commit messages
-- **[Pre-commit Hooks Setup](2.1-Pre-commit-Hooks.md)** - Automated code quality checks
-- **[Pull Request Standards](3.-Pull-Request.md)** - Effective PR creation and review guidelines
-- **[CI/CD Standards](5.-CI-CD.md)** - Continuous Integration and Deployment best practices
-- **[Version Control with Git](8.-Version-Control--w-Git.md)** - Git workflows and strategies
+- **[Home](home.md)** - Overview and introduction to the playbook
+- **[01. Repository README Standards](01-repository-readme-standards.md)** - Guidelines for writing effective repository documentation
+- **[02. Branch Naming Convention](02-branch-naming-convention.md)** - Consistent branch naming patterns
+- **[03. Commit Message Standards](03-commit-message-convention.md)** - Writing clear, meaningful commit messages
+- **[04. Pre-commit Hooks Setup](04-pre-commit-hooks-setup.md)** - Automated code quality checks
+- **[05. Pull Request Standards](05-pull-request-standards.md)** - Effective PR creation and review guidelines
+- **[06. Testing Standards](06-testing-standards.md)** - Comprehensive testing guidelines and best practices
+- **[07. CI/CD Standards](07-ci-cd-standards.md)** - Continuous Integration and Deployment best practices
+- **[08. Version Control with Git](08-version-control-with-git.md)** - Git workflows and strategies
 
 ### Project Management
 
-- **[User Stories Guide](4.-User-Stories-(General).md)** - Writing effective user stories
-- **[GitHub Issues Guide](4.1-GitHub-Issues-Guide.md)** - Managing issues and tasks on GitHub
+- **[09. User Stories Guide](09-user-stories-guide.md)** - Writing effective user stories
+- **[10. GitHub Issues Guide](10-github-issues-guide.md)** - Managing issues and tasks on GitHub
 
 ### Development Standards
 
-- **[RESTful API Design](7.-RESTful-API-Design.md)** - API design principles and best practices
-- **[Other Standards](Other-Standards.md)** - Additional coding and development standards
+- **[11. RESTful API Design](11-restful-api-design.md)** - API design principles and best practices
+- **[12. Other Standards](12-other-standards.md)** - Additional coding and development standards
 
 ## 🚀 Quick Start
 
 ### For New Team Members
 
-1. Read the [Home](Home.md) document for an overview
-2. Familiarize yourself with [Branch Naming](1.-Branch-Naming.md) and [Commit Message](2.-Commit-Message.md) standards
-3. Set up [Pre-commit Hooks](2.1-Pre-commit-Hooks.md) on your development machine
-4. Review the [Pull Request](3.-Pull-Request.md) guidelines
+1. Read the [Home](home.md) document for an overview
+2. Familiarize yourself with [Branch Naming](02-branch-naming-convention.md) and [Commit Message](03-commit-message-convention.md) standards
+3. Set up [Pre-commit Hooks](04-pre-commit-hooks-setup.md) on your development machine
+4. Review the [Pull Request](05-pull-request-standards.md) guidelines
+5. Understand our [Testing Standards](06-testing-standards.md) for writing quality tests
 
 ### For Project Setup
 
-1. Follow [Repository README Standards](0.-Repo-Readme.md) to create your project README
-2. Configure [Pre-commit Hooks](2.1-Pre-commit-Hooks.md) in your repository
-3. Set up [CI/CD](5.-CI-CD.md) pipelines using the provided templates
-4. Implement [Version Control](8.-Version-Control--w-Git.md) workflows
+1. Follow [Repository README Standards](01-repository-readme-standards.md) to create your project README
+2. Configure [Pre-commit Hooks](04-pre-commit-hooks-setup.md) in your repository
+3. Set up [CI/CD](07-ci-cd-standards.md) pipelines using the provided templates
+4. Implement [Version Control](08-version-control-with-git.md) workflows
+5. Establish [Testing](06-testing-standards.md) practices and coverage requirements
 
 ## 🎯 Purpose
 
@@ -65,7 +68,7 @@ This is a living document that evolves with our team's needs. To contribute:
 1. Fork the repository
 2. Create a feature branch: `git checkout -b feat-update-standards-123`
 3. Make your changes
-4. Create a Pull Request following our [PR Standards](3.-Pull-Request.md)
+4. Create a Pull Request following our [PR Standards](05-pull-request-standards.md)
 5. Get approval from at least one team member
 
 ### Contribution Guidelines
@@ -101,12 +104,13 @@ The playbook covers best practices for:
 
 | Standard | Purpose | Quick Link |
 |----------|---------|------------|
-| Branch Naming | Consistent branch names | [Guide](1.-Branch-Naming.md) |
-| Commit Messages | Clear commit history | [Guide](2.-Commit-Message.md) |
-| Pre-commit Hooks | Automated quality checks | [Guide](2.1-Pre-commit-Hooks.md) |
-| Pull Requests | Effective code review | [Guide](3.-Pull-Request.md) |
-| CI/CD | Automated testing & deployment | [Guide](5.-CI-CD.md) |
-| API Design | RESTful API standards | [Guide](7.-RESTful-API-Design.md) |
+| Branch Naming | Consistent branch names | [Guide](02-branch-naming-convention.md) |
+| Commit Messages | Clear commit history | [Guide](03-commit-message-convention.md) |
+| Pre-commit Hooks | Automated quality checks | [Guide](04-pre-commit-hooks-setup.md) |
+| Pull Requests | Effective code review | [Guide](05-pull-request-standards.md) |
+| Testing | Quality assurance practices | [Guide](06-testing-standards.md) |
+| CI/CD | Automated testing & deployment | [Guide](07-ci-cd-standards.md) |
+| API Design | RESTful API standards | [Guide](11-restful-api-design.md) |
 
 ## 📝 Documentation Style
 
