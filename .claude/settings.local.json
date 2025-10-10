@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git mv:*)",
+      "Bash(git -C \"/Users/diemu/ist/Engineering-Playbook\" mv \"0.-Repo-Readme.md\" \"repository-readme-standards.md\")",
+      "Bash(git -C \"/Users/diemu/ist/Engineering-Playbook\" mv \"1.-Branch-Naming.md\" \"branch-naming-convention.md\")",
+      "Bash(git -C \"/Users/diemu/ist/Engineering-Playbook\" mv \"2.-Commit-Message.md\" \"commit-message-convention.md\")"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

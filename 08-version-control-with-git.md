@@ -1,0 +1,538 @@
+# Git Workflow Guide
+
+A comprehensive guide for implementing effective Git workflows that ensure code quality, collaboration, and project management.
+
+## 🎯 Purpose
+
+Git workflow serves as the foundation of modern software development by:
+
+- **Version Control**: Track changes and maintain code history
+- **Collaboration**: Enable team members to work together effectively
+- **Code Quality**: Ensure code reviews and quality gates
+- **Project Management**: Integrate with project tracking tools
+- **Release Management**: Control software releases and deployments
+- **Backup and Recovery**: Protect against data loss
+
+## 📋 Git Fundamentals
+
+### Core Principles
+
+**Version Control Benefits**:
+
+- **Time Machine**: Ability to go back to any point in history
+- **Parallel Development**: Work on multiple features simultaneously
+- **Collaboration**: Multiple developers working on same codebase
+- **Experimentation**: Safe testing without fear of losing work
+- **Rollback Capability**: Quick recovery from issues
+
+### Git Workflow Types
+
+**Gitflow Workflow**:
+
+- **Main Branch**: Production-ready code
+- **Develop Branch**: Integration branch for features
+- **Feature Branches**: Individual feature development
+- **Release Branches**: Prepare releases
+- **Hotfix Branches**: Emergency fixes
+
+**GitHub Flow**:
+
+- **Main Branch**: Always deployable
+- **Feature Branches**: Short-lived feature branches
+- **Pull Requests**: Code review and discussion
+- **Continuous Deployment**: Automatic deployment
+
+**GitLab Flow**:
+
+- **Environment Branches**: Different environments
+- **Upstream First**: Merge to main first
+- **Feature Branches**: Feature development
+- **Release Branches**: Release management
+
+## 🏗️ Branch Strategy
+
+### Branch Naming Convention
+
+**Format**: `{type}-{description}-{issue-id}`
+
+**Types**:
+
+- **feat**: New features
+- **fix**: Bug fixes
+- **chore**: Maintenance tasks
+- **docs**: Documentation updates
+- **refactor**: Code refactoring
+- **perf**: Performance improvements
+- **test**: Testing improvements
+- **style**: Code style changes
+- **ci**: CI/CD changes
+- **build**: Build system changes
+
+**Examples**:
+
+```bash
+feat-user-authentication-123
+fix-login-validation-456
+chore-update-dependencies-789
+docs-api-documentation-101
+```
+
+### Branch Protection Rules
+
+**Main Branch Protection**:
+
+- **Require Pull Request**: No direct pushes
+- **Require Reviews**: Minimum number of reviewers
+- **Require Status Checks**: CI/CD must pass
+- **Require Up-to-date**: Must be up-to-date with main
+- **Restrict Pushes**: Only specific users can push
+
+**Develop Branch Protection**:
+
+- **Require Pull Request**: No direct pushes
+- **Require Reviews**: Minimum number of reviewers
+- **Require Status Checks**: CI/CD must pass
+- **Allow Force Pushes**: For rebasing
+
+## 🔄 Git Operations
+
+### Rebasing
+
+**Purpose**: Keep feature branches up-to-date with the latest changes from the main branch.
+
+**Steps**:
+
+1. **Update Main Branch**:
+
+   ```bash
+   git checkout main
+   git pull origin main
+   ```
+
+2. **Switch to Feature Branch**:
+
+   ```bash
+   git checkout feat-user-authentication-123
+   ```
+
+3. **Rebase onto Main**:
+
+   ```bash
+   git rebase main
+   ```
+
+4. **Force Push (if needed)**:
+   ```bash
+   git push --force-with-lease origin feat-user-authentication-123
+   ```
+
+**Handling Rebase Conflicts**:
+
+1. **Check Status**:
+
+   ```bash
+   git status
+   ```
+
+2. **Resolve Conflicts**: Edit conflicted files
+3. **Add Resolved Files**:
+
+   ```bash
+   git add <resolved-file>
+   ```
+
+4. **Continue Rebase**:
+
+   ```bash
+   git rebase --continue
+   ```
+
+5. **Repeat until complete**
+
+### Cherry-picking
+
+**Purpose**: Apply specific commits from one branch to another.
+
+**Steps**:
+
+1. **Find Commit Hash**:
+
+   ```bash
+   git log --oneline
+   ```
+
+2. **Switch to Target Branch**:
+
+   ```bash
+   git checkout main
+   ```
+
+3. **Cherry-pick Commit**:
+
+   ```bash
+   git cherry-pick <commit-hash>
+   ```
+
+4. **Push Changes**:
+   ```bash
+   git push origin main
+   ```
+
+### Hot-fixing
+
+**Purpose**: Apply emergency fixes to production without going through normal development process.
+
+**Steps**:
+
+1. **Create Hotfix Branch**:
+
+   ```bash
+   git checkout main
+   git checkout -b hotfix-critical-bug-999
+   ```
+
+2. **Make Fix and Commit**:
+
+   ```bash
+   git add .
+   git commit -m "fix: resolve critical security vulnerability"
+   ```
+
+3. **Merge to Main**:
+
+   ```bash
+   git checkout main
+   git merge hotfix-critical-bug-999
+   git push origin main
+   ```
+
+4. **Update Develop**:
+
+   ```bash
+   git checkout develop
+   git merge main
+   git push origin develop
+   ```
+
+5. **Delete Hotfix Branch**:
+   ```bash
+   git branch -d hotfix-critical-bug-999
+   git push origin --delete hotfix-critical-bug-999
+   ```
+
+## 🔧 Advanced Git Techniques
+
+### Interactive Rebase
+
+**Purpose**: Clean up commit history before merging.
+
+**Steps**:
+
+1. **Start Interactive Rebase**:
+
+   ```bash
+   git rebase -i HEAD~3
+   ```
+
+2. **Choose Actions**:
+
+   - **pick**: Use commit as-is
+   - **reword**: Change commit message
+   - **edit**: Stop to amend commit
+   - **squash**: Combine with previous commit
+   - **drop**: Remove commit
+
+3. **Save and Continue**:
+   ```bash
+   git rebase --continue
+   ```
+
+### Stashing
+
+**Purpose**: Temporarily save changes without committing.
+
+**Basic Stash**:
+
+```bash
+git stash
+git stash pop
+```
+
+**Named Stash**:
+
+```bash
+git stash push -m "WIP: user authentication"
+git stash list
+git stash apply stash@{0}
+```
+
+**Stash with Untracked Files**:
+
+```bash
+git stash -u
+```
+
+### Tagging
+
+**Lightweight Tags**:
+
+```bash
+git tag v1.0.0
+git push origin v1.0.0
+```
+
+**Annotated Tags**:
+
+```bash
+git tag -a v1.0.0 -m "Release version 1.0.0"
+git push origin v1.0.0
+```
+
+**List Tags**:
+
+```bash
+git tag -l
+git tag -l "v1.*"
+```
+
+## 🚀 CI/CD Integration
+
+### GitHub Actions
+
+**Basic Workflow**:
+
+```yaml
+name: CI/CD Pipeline
+on:
+  push:
+    branches: [main, develop]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm ci
+      - name: Run tests
+        run: npm test
+      - name: Run linting
+        run: npm run lint
+```
+
+### Branch Protection
+
+**Required Status Checks**:
+
+- **Linting**: Code style checks
+- **Testing**: Unit and integration tests
+- **Security**: Vulnerability scanning
+- **Build**: Successful compilation
+- **Deployment**: Successful deployment to staging
+
+## 📊 Project Management Integration
+
+### GitHub Integration
+
+**Automatic Linking**:
+
+- **Pull Requests**: Link to issues automatically
+- **Commits**: Reference issues in commit messages
+- **Branches**: Include issue numbers in branch names
+- **Releases**: Link to milestone and issues
+
+**Issue References**:
+
+```bash
+# In commit messages
+git commit -m "feat: add user authentication (#123)"
+
+# In branch names
+git checkout -b feat-user-auth-123
+```
+
+### Project Boards
+
+**Integration Features**:
+
+- **Automatic Updates**: PRs and commits update project status
+- **Multi-repo Support**: Connect multiple repositories
+- **Milestone Tracking**: Link issues to milestones
+- **Progress Tracking**: Visual progress indicators
+
+## 📋 Best Practices
+
+### Do's ✅
+
+- **Use Descriptive Branch Names**: Clear, descriptive branch names
+- **Write Clear Commit Messages**: Follow conventional commit format
+- **Keep Commits Small**: One logical change per commit
+- **Review Before Merging**: Always review code before merging
+- **Use Pull Requests**: Never push directly to main or dev
+- **Keep History Clean**: Use rebase to clean up history
+- **Tag Releases**: Tag all releases with version numbers
+- **Backup Regularly**: Push changes frequently
+
+### Don'ts ❌
+
+- **Don't Force Push to Shared Branches**: Use force-with-lease
+- **Don't Commit Sensitive Data**: Use environment variables
+- **Don't Skip Reviews**: Always have code reviewed
+- **Don't Merge Broken Code**: Ensure all checks pass
+- **Don't Ignore Conflicts**: Resolve conflicts properly
+- **Don't Delete Shared Branches**: Be careful with branch deletion
+- **Don't Work on Main**: Always use feature branches
+- **Don't Forget to Pull**: Keep branches up-to-date
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+**Merge Conflicts**:
+
+```bash
+git status
+git diff
+git mergetool
+git add .
+git commit
+```
+
+**Detached HEAD**:
+
+```bash
+git checkout main
+git checkout -b new-branch
+```
+
+**Lost Commits**:
+
+```bash
+git reflog
+git checkout <commit-hash>
+```
+
+**Undo Last Commit**:
+
+```bash
+git reset --soft HEAD~1
+git reset --hard HEAD~1
+```
+
+### Recovery Commands
+
+**Reset to Previous Commit**:
+
+```bash
+git reset --hard HEAD~1
+```
+
+**Revert Specific Commit**:
+
+```bash
+git revert <commit-hash>
+```
+
+**Recover Deleted Branch**:
+
+```bash
+git reflog
+git checkout -b <branch-name> <commit-hash>
+```
+
+## 📚 Additional Resources
+
+- [Git Official Documentation](https://git-scm.com/doc)
+- [GitHub Flow](https://guides.github.com/introduction/flow/)
+- [GitLab Flow](https://docs.gitlab.com/ee/topics/gitlab_flow.html)
+- [Atlassian Git Tutorials](https://www.atlassian.com/git/tutorials)
+- [Pro Git Book](https://git-scm.com/book)
+- [GitHub CLI](https://cli.github.com/)
+
+---
+
+**Note**: This is a living document that should evolve with your team's needs and project requirements. Regular reviews and updates ensure the Git workflow remains effective and valuable.
+
+### Rebasing
+
+> Rebasing is taking all your branch's commits and adding them on top of later commits that were added to the branch you created yours from. This is useful when say you created your feature branch from `develop` and as you were working, your team members completed their work, and their PRs were merged. Rebasing will make sure your commits are added after theirs on your feature branch and `develop`.
+
+Steps:
+
+- Ensure you have the most up-to-date version of the branch you're rebasing on (we'll assume `develop` in this case)
+  - `git checkout develop`
+  - `git pull`
+- Checkout to your feature branch (whichever branch you're working with)
+  - `git checkout feat-user-authentication-123`
+- Run the rebase
+  - `git rebase develop`
+
+Assuming no conflicts were encountered, the rebase is completed.
+
+#### Handling Rebase Conflicts
+
+> Not all merges go smoothly
+
+If you've dealt with [merge conflicts](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/) before, rebase conflicts are handled essentially the same way. During the rebase, git adds each commit onto the new base one by one. If it reaches a commit with a conflict, it'll pause the rebase and resume once it's fixed. Here's what to do:
+
+- Run git status to find out where the conflicts are
+  - `git status`
+- [Fix the conflict](https://help.github.com/articles/resolving-a-merge-conflict-using-the-command-line/#competing-line-change-merge-conflicts)
+- Continue the rebase
+  - `git rebase --continue`
+- It'll pause for any more conflicts, and once they're set you just need to force push to update your remote
+  - `git push --force-with-lease`
+  - Read more about `--force-with-lease` [here](https://developer.atlassian.com/blog/2015/04/force-with-lease/)
+
+[Read more](https://git-scm.com/docs/git-rebase) about `git rebase`.
+
+### Cherry-picking
+
+> Given one or more existing commits, apply the change each one introduces, recording a new commit for each
+
+What `git cherry-pick` does, basically, is taking a commit from somewhere else, and "play it back" wherever you are right now. Because this introduces the same change with a different parent, Git builds a new commit with a different ID. When you git cherry-pick a commit, only the change associated with that commit is re-applied to the working tree. Let's see how:
+
+- Make sure the branch with the foreign commit is updated (we'll use `fix-cache-invalidation-456`).
+  - `git checkout fix-cache-invalidation-456`
+  - `git pull origin fix-cache-invalidation-456`
+- Get the commit `HASH` of the commit you want to apply to the branch
+  - Run git log
+    - `git log`
+  - Scroll through the commits and find the commit `HASH` (at least the first 5 characters) of the commit you want to apply to your branch
+  - Copy it somewhere (or just to your clipboard)
+- Switch to the branch you want to apply the commit to (we'll use main)
+  - `git checkout main`
+- Cherry Pick the commit (replace `HASH` with what you copied)
+  - `git cherry-pick HASH`
+
+`main` should now have the changes introduced by the commit `HASH` from `fix-cache-invalidation-456`
+
+### Hot fixing
+
+> Bugs do crawl
+
+Cases may arise where you need quickly apply a fix to your production (or any) environment. Steps you could take:
+
+- Branch from where you want to apply the fix (we'll use main)
+  - `git checkout main`
+  - `git branch fix-memory-leak-789`
+  - `git checkout fix-memory-leak-789`
+- Work on a patch for the bug and commit it
+- Use the [Cherry Pick](#cherry-pick) instructions above to apply the commit to your `main` branch
+
+You're now left with a working `main` but all your other branches are outdated. Let's see how we would go about updating `develop` (and probably all others) without breaking anything:
+
+- If you're using a branch, say `develop`, to create all your other feature branches you'll want to apply the fix to develop first. Here we'll rebase, but what will actually happen is Git will try to combine the snapshots of both HEAD commits into a new snapshot. If a portion of code or a file is identical in both snapshots (i.e. because a commit was already cherry-picked), Git won't touch it.
+- Hence all we need to do is follow [rebasing](#rebasing) instructions. Only in this case, we're first updating develop:
+  - `git checkout develop`
+  - `git rebase main`
+- We can then alert the whole team to update their branches:
+  - `git checkout feat-user-authentication`
+  - `git fetch`
+  - `git rebase develop`
